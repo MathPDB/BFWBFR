@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -38,7 +40,7 @@ public class Previsao extends Cadastro {
             if (vitima.getCod() == codVit) {
                 int confirmacao = JOptionPane.showOptionDialog(
                         null,
-                        "                   ***** -- ATENÇÃO -- *****\n\n" + vitima.getConteudo() + "\nDeseja saber o que o futuro lhe guarda?",
+                        "                   ***** -- ATENÇÃO -- *****\n\n" + vitima.getConteudo() + "\nDeseja saber o que o futuro lhe guarda?\n",
                         "Futurólogo GAGO",
                         JOptionPane.YES_NO_OPTION,
                         JOptionPane.PLAIN_MESSAGE,
@@ -72,8 +74,18 @@ public class Previsao extends Cadastro {
                 }
                 }
             }
+        
+
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter("prevision.txt"));
+                writer.write("*** - ATENÇÃO: " + alVit.get(codVit).getConteudo() + " - ***");
+                writer.newLine();
+                writer.write(alPrev.get(codPrev).getConteudo());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-    
 
     public static void listar(ArrayList<Previsao> al) {
 

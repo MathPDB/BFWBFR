@@ -7,8 +7,8 @@ public class Main {
         ArrayList<Previsao> alPrev = new ArrayList<Previsao>();
         int op = 0;
 
-        while (op != 3) { // op 3 = case 4
-            String[] options = { "Importar um Arquivo", "Viajar para o Futuro", "Exportar Previsão", "Sair" };
+        while (op != 2) { // op 3 = case 4
+            String[] options = { "Importar um Arquivo", "Viajar para o Futuro", "Sair" };
             op = JOptionPane.showOptionDialog(
                     null, // Componente pai (null = janela principal)
                     "Selecione uma opção:", // Mensagem de texto
@@ -41,6 +41,7 @@ public class Main {
                             Vitima.importarVit(alVit);
                             break;
                         case 2:
+                            op=0;
                             break;
                     }
                     break;
@@ -48,10 +49,8 @@ public class Main {
                     Previsao.sortear(alVit, alPrev);
                     break;
                 case 3:
-
                     break;
-                case 4:
-                    break;
+                
 
             }
             // Previsao.listar(alPrev);
